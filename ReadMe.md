@@ -9,7 +9,7 @@ Asp .Net 8 Stock Market Web Api
 ### Api Layers
 
     - CONTROLLER LAYER
-    - SERVICE	LAYER
+    - SERVICE LAYER
     - REPOSITORY LAYER
     - DATABASE
 
