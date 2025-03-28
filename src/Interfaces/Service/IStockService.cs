@@ -14,5 +14,6 @@ namespace demo_dotnetcore_web_api.src.Interfaces
         Task<StockDto> CreateAsync(CreateStockRequestDto stockModel);
         Task<StockDto?> UpdateAsync(int id, UpdateStockRequestDto stockRequestDto);
         Task<Stock?> DeleteAsync(int id);
+        Task<bool> StockExistsAsync(int id);
     }
 }

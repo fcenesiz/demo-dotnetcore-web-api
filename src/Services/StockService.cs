@@ -49,6 +49,11 @@ namespace demo_dotnetcore_web_api.src.Services
             return stock.ToStockDto();
         }
 
+        public async Task<bool> StockExistsAsync(int id)
+        {
+            return await _stockRepository.StockExistsAsync(id);
+        }
+
         public async Task<StockDto?> UpdateAsync(int id, UpdateStockRequestDto stockRequestDto)
         {
             var stockModel = await _stockRepository.UpdateAsync(id, stockRequestDto);

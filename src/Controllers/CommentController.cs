@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using demo_dotnetcore_web_api.src.Dtos.Comment;
 using demo_dotnetcore_web_api.src.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
@@ -35,6 +36,12 @@ namespace demo_dotnetcore_web_api.src.Controllers
                 return NotFound();
             }
             return Ok(commentDto);
+        }
+
+        [HttpPost("{stockId}")]
+        public async Task<IActionResult> Create([FromRoute] int stockId, CreateCommentDto createCommentDto)
+        {
+
         }
 
     }
