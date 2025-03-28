@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "mTfjO0eApnPCnc5UIVUWPPE004aNGBJvLJoh03nEqA0=",
+  "Source": "demo-dotnetcore-web-api",
+  "BasePath": "_content/demo-dotnetcore-web-api",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

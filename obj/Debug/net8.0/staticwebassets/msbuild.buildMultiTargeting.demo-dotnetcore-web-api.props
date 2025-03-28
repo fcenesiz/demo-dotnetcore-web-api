@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="../build/demo-dotnetcore-web-api.props" />
+</Project>

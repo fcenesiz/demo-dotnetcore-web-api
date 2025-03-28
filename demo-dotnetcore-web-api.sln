@@ -1,0 +1,24 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.2.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "demo-dotnetcore-web-api", "demo-dotnetcore-web-api.csproj", "{1BBB13DE-C8EF-B8C2-537D-BAB72213FF2B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1BBB13DE-C8EF-B8C2-537D-BAB72213FF2B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1BBB13DE-C8EF-B8C2-537D-BAB72213FF2B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1BBB13DE-C8EF-B8C2-537D-BAB72213FF2B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1BBB13DE-C8EF-B8C2-537D-BAB72213FF2B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {15A0AC64-8880-4D2D-95EA-1DECFC0D3CDD}
+	EndGlobalSection
+EndGlobal
