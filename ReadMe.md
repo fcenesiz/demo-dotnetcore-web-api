@@ -4,19 +4,14 @@ Asp .Net 8 Stock Market Web Api
 
 ### Databse
 
-    Postgres
+    Postgres 8.0
 
 ### Api Layers
 
-    |———————————------------|
-    |	CONTROLLER LAYER	|
-    |		    |		    |
-    |	SERVICE	LAYER	    |
-    |		    |		    |
-    |	REPOSITORY LAYER    |
-    |		    |		    |
-    |	    DATABASE	    |
-    |————————————-----------|
+    - CONTROLLER LAYER
+    - SERVICE	LAYER
+    - REPOSITORY LAYER
+    - DATABASE
 
 ### Used Packages
 
