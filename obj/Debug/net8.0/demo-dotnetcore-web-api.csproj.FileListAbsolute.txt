@@ -167,3 +167,7 @@
 /Users/ahmetfatihcenesiz/Documents/service-apps/demo-dotnetcore-web-api/obj/Debug/net8.0/demo-dotnetcore-web-api.genruntimeconfig.cache
 /Users/ahmetfatihcenesiz/Documents/service-apps/demo-dotnetcore-web-api/obj/Debug/net8.0/ref/demo-dotnetcore-web-api.dll
 /Users/ahmetfatihcenesiz/Documents/service-apps/demo-dotnetcore-web-api/bin/Debug/net8.0/Newtonsoft.Json.dll
+/Users/ahmetfatihcenesiz/Documents/service-apps/demo-dotnetcore-web-api/bin/Debug/net8.0/Microsoft.AspNetCore.JsonPatch.dll
+/Users/ahmetfatihcenesiz/Documents/service-apps/demo-dotnetcore-web-api/bin/Debug/net8.0/Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+/Users/ahmetfatihcenesiz/Documents/service-apps/demo-dotnetcore-web-api/bin/Debug/net8.0/Newtonsoft.Json.Bson.dll
+/Users/ahmetfatihcenesiz/Documents/service-apps/demo-dotnetcore-web-api/obj/Debug/net8.0/demo-dotnetcore-web-api.sourcelink.json
