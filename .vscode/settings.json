@@ -1,1 +1,3 @@
-{}
+{
+    "dotnet-interactive.minimumDotNetSdkVersion": "8.0"
+}

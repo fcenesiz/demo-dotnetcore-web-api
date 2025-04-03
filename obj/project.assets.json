@@ -3617,19 +3617,19 @@
     ]
   },
   "packageFolders": {
-    "/Users/ahmetfatihcenesiz/.nuget/packages/": {}
+    "C:\\Users\\Fatih\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/ahmetfatihcenesiz/Documents/service-apps/demo-dotnetcore-web-api/demo-dotnetcore-web-api.csproj",
+      "projectUniqueName": "C:\\Users\\Fatih\\Documents\\service-apps\\demo-dotnetcore-web-api\\demo-dotnetcore-web-api.csproj",
       "projectName": "demo-dotnetcore-web-api",
-      "projectPath": "/Users/ahmetfatihcenesiz/Documents/service-apps/demo-dotnetcore-web-api/demo-dotnetcore-web-api.csproj",
-      "packagesPath": "/Users/ahmetfatihcenesiz/.nuget/packages/",
-      "outputPath": "/Users/ahmetfatihcenesiz/Documents/service-apps/demo-dotnetcore-web-api/obj/",
+      "projectPath": "C:\\Users\\Fatih\\Documents\\service-apps\\demo-dotnetcore-web-api\\demo-dotnetcore-web-api.csproj",
+      "packagesPath": "C:\\Users\\Fatih\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Fatih\\Documents\\service-apps\\demo-dotnetcore-web-api\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/ahmetfatihcenesiz/.nuget/NuGet/NuGet.Config"
+        "C:\\Users\\Fatih\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
@@ -3652,7 +3652,8 @@
         "enableAudit": "true",
         "auditLevel": "low",
         "auditMode": "direct"
-      }
+      },
+      "SdkAnalysisLevel": "9.0.200"
     },
     "frameworks": {
       "net8.0": {
@@ -3706,7 +3707,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.300/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.202/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

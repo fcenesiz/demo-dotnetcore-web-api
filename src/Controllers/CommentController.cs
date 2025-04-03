@@ -38,11 +38,11 @@ namespace demo_dotnetcore_web_api.src.Controllers
             return Ok(commentDto);
         }
 
-        [HttpPost("{stockId}")]
-        public async Task<IActionResult> Create([FromRoute] int stockId, CreateCommentDto createCommentDto)
-        {
+        //[HttpPost("{stockId}")]
+        //public async Task<IActionResult> Create([FromRoute] int stockId, CreateCommentDto createCommentDto)
+        //{
 
-        }
+        //}
 
     }
 }
