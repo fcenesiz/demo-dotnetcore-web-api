@@ -2,18 +2,18 @@
 
 Asp .Net 8 Stock Market Web Api
 
-### Databse
+## Databse
 
     Postgres 8.0
 
-### Api Layers
+## Api Layers
 
     - CONTROLLER LAYER
     - SERVICE LAYER
     - REPOSITORY LAYER
     - DATABASE
 
-### Used Packages
+## Used Packages
 
     - Microsoft.EntityFrameworkCore.SqlServer
     - veya Npgsql.EntityFrameworkCore.PostgreSQL
@@ -25,7 +25,7 @@ Asp .Net 8 Stock Market Web Api
     - Microsoft.AspNetCore.Identity.EntityFrameworkCore
     - Microsoft.AspNetCore.Authentication.JWTBearer
 
-### Used Visual Studio Code Extensions
+## Used Visual Studio Code Extensions
 
     - C#
     - C# Dev Kit
