@@ -55,4 +55,4 @@ Asp .Net 8 Stock Market Web Api
     - Data Validation
     - Filtering
     - Sorting
-    - Pagination
+    - Pagination ( Generic )

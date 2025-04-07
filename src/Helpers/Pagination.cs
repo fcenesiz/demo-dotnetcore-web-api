@@ -26,13 +26,13 @@ namespace demo_dotnetcore_web_api.src.Helpers
             HasNext = index < Pages;
         }
 
-        public static Pagination<T> Paginate<T>(List<T> source, int index, int size)
+        public static Pagination<T> Paginate(List<T> source, int index, int size)
         {
 
             if (index <= 0) index = 1; // index'in pozitif olduğundan emin olun
             if (size <= 0) size = 10;  // size'ın pozitif olduğundan emin olun
 
-            var count = source.Count();
+            var count = source.Count;
             var items = source.Skip((index - 1) * size).Take(size).ToList();
             return new Pagination<T>(items, count, index, size);
         }
