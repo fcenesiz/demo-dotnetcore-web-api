@@ -3609,6 +3609,7 @@
     "net8.0": [
       "Microsoft.AspNetCore.Mvc.NewtonsoftJson >= 8.0.5",
       "Microsoft.AspNetCore.OpenApi >= 8.0.5",
+      "Microsoft.EntityFrameworkCore >= 9.0.3",
       "Microsoft.EntityFrameworkCore.Design >= 9.0.3",
       "Microsoft.EntityFrameworkCore.Tools >= 9.0.3",
       "Newtonsoft.Json >= 13.0.3",
@@ -3617,19 +3618,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Fatih\\.nuget\\packages\\": {}
+    "/Users/ahmetfatihcenesiz/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Fatih\\Documents\\service-apps\\demo-dotnetcore-web-api\\demo-dotnetcore-web-api.csproj",
+      "projectUniqueName": "/Users/ahmetfatihcenesiz/Documents/service-apps/demo-dotnetcore-web-api/demo-dotnetcore-web-api.csproj",
       "projectName": "demo-dotnetcore-web-api",
-      "projectPath": "C:\\Users\\Fatih\\Documents\\service-apps\\demo-dotnetcore-web-api\\demo-dotnetcore-web-api.csproj",
-      "packagesPath": "C:\\Users\\Fatih\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Fatih\\Documents\\service-apps\\demo-dotnetcore-web-api\\obj\\",
+      "projectPath": "/Users/ahmetfatihcenesiz/Documents/service-apps/demo-dotnetcore-web-api/demo-dotnetcore-web-api.csproj",
+      "packagesPath": "/Users/ahmetfatihcenesiz/.nuget/packages/",
+      "outputPath": "/Users/ahmetfatihcenesiz/Documents/service-apps/demo-dotnetcore-web-api/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Fatih\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "/Users/ahmetfatihcenesiz/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
@@ -3652,8 +3653,7 @@
         "enableAudit": "true",
         "auditLevel": "low",
         "auditMode": "direct"
-      },
-      "SdkAnalysisLevel": "9.0.200"
+      }
     },
     "frameworks": {
       "net8.0": {
@@ -3666,6 +3666,10 @@
           "Microsoft.AspNetCore.OpenApi": {
             "target": "Package",
             "version": "[8.0.5, )"
+          },
+          "Microsoft.EntityFrameworkCore": {
+            "target": "Package",
+            "version": "[9.0.3, )"
           },
           "Microsoft.EntityFrameworkCore.Design": {
             "target": "Package",
@@ -3707,7 +3711,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.202/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.300/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

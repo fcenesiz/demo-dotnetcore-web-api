@@ -4,12 +4,13 @@ using System.Linq;
 using System.Threading.Tasks;
 using demo_dotnetcore_web_api.Models;
 using demo_dotnetcore_web_api.src.Dtos.Stock;
+using demo_dotnetcore_web_api.src.Helpers;
 
 namespace demo_dotnetcore_web_api.src.Interfaces
 {
     public interface IStockRepository
     {
-        Task<List<Stock>> GetAllAsync();
+        Task<List<Stock>> GetAllAsync(QueryObject query);
         Task<Stock?> GetByIdAsync(int id);
         Task<Stock> CreateAsync(Stock stockModel);
         Task<Stock?> UpdateAsync(int id, UpdateStockRequestDto stockRequestDto);

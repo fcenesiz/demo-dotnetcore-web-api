@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using demo_dotnetcore_web_api.Models;
 using demo_dotnetcore_web_api.src.Dtos.Stock;
+using demo_dotnetcore_web_api.src.Helpers;
 using demo_dotnetcore_web_api.src.Interfaces;
 using demo_dotnetcore_web_api.src.Mappers;
 
@@ -32,9 +33,9 @@ namespace demo_dotnetcore_web_api.src.Services
             return await _stockRepository.DeleteAsync(id);
         }
 
-        public async Task<List<StockDto>> GetAllAsync()
+        public async Task<List<StockDto>> GetAllAsync(QueryObject query)
         {
-            var stocks = await _stockRepository.GetAllAsync();
+            var stocks = await _stockRepository.GetAllAsync(query);
             var stocksDto = stocks.Select(s => s.ToStockDto()).ToList();
             return stocksDto;
         }

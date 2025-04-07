@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace demo_dotnetcore_web_api.src.Dtos.Comment
 {
-    public class CreateCommentDto
+    public class UpdateCommentRequestDto
     {
         [Required]
         [MinLength(5, ErrorMessage = "Title must be 5 characters")]
@@ -16,5 +16,6 @@ namespace demo_dotnetcore_web_api.src.Dtos.Comment
         [MinLength(5, ErrorMessage = "Content must be 5 characters")]
         [MaxLength(280, ErrorMessage = "Content cannot be over 280 characters")]
         public string Content { get; set; } = string.Empty;
+
     }
 }

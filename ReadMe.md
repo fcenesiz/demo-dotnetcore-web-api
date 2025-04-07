@@ -38,10 +38,21 @@ Asp .Net 8 Stock Market Web Api
 ## Entity Framework Database Migration
 
 ### 1. Install Entity Framework
+
     dotnet tool install --global dotnet-ef
 
 ### 2. Add Migration
+
     dotnet ef migrations add InitialCreate
 
 ### 3. Update Database
+
     dotnet ef database update
+
+### Used Techniques
+
+    - One-To-Many Creation
+    - Data Validation
+    - Filtering
+    - Sorting
+    - Pagination
