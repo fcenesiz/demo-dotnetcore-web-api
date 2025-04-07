@@ -49,7 +49,7 @@ Asp .Net 8 Stock Market Web Api
 
     dotnet ef database update
 
-### Used Techniques
+## Used Techniques
 
     - One-To-Many Creation
     - Data Validation

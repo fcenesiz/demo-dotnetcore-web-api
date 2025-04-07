@@ -15,12 +15,10 @@ namespace demo_dotnetcore_web_api.src.Controllers
     public class CommentController : ControllerBase
     {
         private readonly ICommentService _commentService;
-        private readonly IStockService _stockService;
 
-        public CommentController(ICommentService service, IStockService stockService)
+        public CommentController(ICommentService service)
         {
             this._commentService = service;
-            this._stockService = stockService;
         }
 
         [HttpGet]
@@ -99,6 +97,5 @@ namespace demo_dotnetcore_web_api.src.Controllers
 
             return NoContent();
         }
-
     }
 }

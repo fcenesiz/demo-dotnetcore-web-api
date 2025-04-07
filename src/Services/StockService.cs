@@ -33,11 +33,11 @@ namespace demo_dotnetcore_web_api.src.Services
             return await _stockRepository.DeleteAsync(id);
         }
 
-        public async Task<List<StockDto>> GetAllAsync(QueryObject query)
+        public async Task<Pagination<StockDto>> GetAllAsync(QueryObject query)
         {
             var stocks = await _stockRepository.GetAllAsync(query);
             var stocksDto = stocks.Select(s => s.ToStockDto()).ToList();
-            return stocksDto;
+            return Pagination<StockDto>.Paginate(stocksDto, query.Page, query.PageSize);
         }
 
         public async Task<StockDto?> GetByIdAsync(int id)
