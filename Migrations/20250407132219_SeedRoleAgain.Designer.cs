@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using demo_dotnetcore_web_api.src.Data;
@@ -11,9 +12,11 @@ using demo_dotnetcore_web_api.src.Data;
 namespace demo_dotnetcore_web_api.Migrations
 {
     [DbContext(typeof(ApplicationDBContext))]
-    partial class ApplicationDBContextModelSnapshot : ModelSnapshot
+    [Migration("20250407132219_SeedRoleAgain")]
+    partial class SeedRoleAgain
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -50,13 +53,13 @@ namespace demo_dotnetcore_web_api.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "Admin",
+                            Id = "a68e1faf-b6ce-4960-a1f1-dd2ed4650eb2",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "User",
+                            Id = "5b0810c1-0b28-4d11-8753-d460234a6fd5",
                             Name = "User",
                             NormalizedName = "USER"
                         });
