@@ -58,10 +58,13 @@ builder.Services.AddAuthentication(options =>
     };
 });
 
+// Services
+builder.Services.AddScoped<ITokenService, TokenService>();
 builder.Services.AddScoped<IStockService, StockService>();
-builder.Services.AddScoped<IStockRepository, StockRepository>();
-
 builder.Services.AddScoped<ICommentService, CommentService>();
+
+// Repositories
+builder.Services.AddScoped<IStockRepository, StockRepository>();
 builder.Services.AddScoped<ICommentRepository, CommentRepository>();
 
 var app = builder.Build();

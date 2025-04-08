@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 using demo_dotnetcore_web_api.src.Dtos.Account;
+using demo_dotnetcore_web_api.src.Interfaces;
 using demo_dotnetcore_web_api.src.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -14,10 +15,12 @@ namespace demo_dotnetcore_web_api.src.Controllers
     [ApiController]
     public class AccountController : ControllerBase
     {
-        private UserManager<AppUser> _userManager;
-        public AccountController(UserManager<AppUser> userManager)
+        private readonly UserManager<AppUser> _userManager;
+        private readonly ITokenService _tokenService;
+        public AccountController(UserManager<AppUser> userManager, ITokenService tokenService)
         {
             this._userManager = userManager;
+            this._tokenService = tokenService;
         }
 
         [HttpPost("register")]
@@ -41,7 +44,14 @@ namespace demo_dotnetcore_web_api.src.Controllers
                     var roleResult = await _userManager.AddToRoleAsync(appUser, "User");
                     if (roleResult.Succeeded)
                     {
-                        return Ok("User created");
+                        return Ok(
+                            new NewUserDto
+                            {
+                                UserName = appUser.UserName,
+                                Email = appUser.Email,
+                                Token = _tokenService.CreateToken(appUser)
+                            }
+                        );
                     }
                     else
                     {
