@@ -6,6 +6,8 @@ using demo_dotnetcore_web_api.Models;
 using demo_dotnetcore_web_api.src.Dtos.Comment;
 using demo_dotnetcore_web_api.src.Interfaces;
 using demo_dotnetcore_web_api.src.Mappers;
+using demo_dotnetcore_web_api.src.Models;
+using Microsoft.AspNetCore.Identity;
 
 namespace demo_dotnetcore_web_api.src.Services
 {
@@ -14,19 +16,25 @@ namespace demo_dotnetcore_web_api.src.Services
         private readonly ICommentRepository _commentRepo;
         private readonly IStockService _stockService;
 
-        public CommentService(ICommentRepository repository, IStockService stockService)
+
+        public CommentService(ICommentRepository repository, IStockService stockService, UserManager<AppUser> userManager)
         {
             this._commentRepo = repository;
             this._stockService = stockService;
+
         }
 
-        public async Task<CommentDto?> CreateAsync(int stockId, CreateCommentDto createCommentDto)
+        public async Task<CommentDto?> CreateAsync(int stockId, CreateCommentDto createCommentDto, AppUser appUser)
         {
             if (!await _stockService.StockExistsAsync(stockId))
             {
                 return null;
             }
+
+
+
             var commentModel = createCommentDto.ToCommentFromCreate(stockId);
+            commentModel.AppUserId = appUser.Id;
             await _commentRepo.CreateAsync(commentModel);
             return commentModel.ToCommentDto();
         }

@@ -17,6 +17,7 @@ namespace demo_dotnetcore_web_api.src.Mappers
                 Title = commenModel.Title,
                 Content = commenModel.Content,
                 CreatedOn = commenModel.CreatedOn,
+                CreatedBy = commenModel.AppUser.UserName,
                 StockId = commenModel.StockId
             };
         }

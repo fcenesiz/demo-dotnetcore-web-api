@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("demo-dotnetcore-web-api")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1c63a334f1a7afd55dfa42e05dcf5d4bc90af603")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a1432cd7d84eebe303c6c3fa52e488afde3dd5c4")]
 [assembly: System.Reflection.AssemblyProductAttribute("demo-dotnetcore-web-api")]
 [assembly: System.Reflection.AssemblyTitleAttribute("demo-dotnetcore-web-api")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
