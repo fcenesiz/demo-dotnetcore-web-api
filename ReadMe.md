@@ -53,6 +53,7 @@ Asp .Net 8 Stock Market Web Api
 
     - One-To-Many Creation
     - Many-To-Many Creation
+    - One-To-One Creation
     - Data Validation
     - Filtering
     - Sorting
