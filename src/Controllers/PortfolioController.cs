@@ -36,5 +36,39 @@ namespace demo_dotnetcore_web_api.src.Controllers
 
             return Ok(userPorfolio);
         }
+
+        [HttpPost]
+        [Authorize]
+        public async Task<IActionResult> AddPortfolio(string symbol)
+        {
+            var username = User.GetUserName();
+            var appUser = await _userManager.FindByNameAsync(username);
+            var stock = await _stockRepository.GetBySymbolAsync(symbol);
+
+            if (stock == null)
+            {
+                return BadRequest("Stock not found");
+            }
+
+            var userPortfolio = await _porfolioRepository.GetUserPorfolio(appUser);
+
+            if (userPortfolio.Any(e => e.Symbol.ToLower() == symbol.ToLower()))
+            {
+                return BadRequest("Can not add same stock to portfolio");
+            }
+
+            var portfolioModel = new Portfolio
+            {
+                StockId = stock.Id,
+                AppUserId = appUser.Id
+            };
+            await _porfolioRepository.CreateAsync(portfolioModel);
+            if (portfolioModel == null)
+            {
+                return StatusCode(500, "Could not create");
+            }
+            return Created();
+        }
+
     }
 }

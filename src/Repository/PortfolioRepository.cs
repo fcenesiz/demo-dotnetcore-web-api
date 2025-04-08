@@ -6,6 +6,8 @@ using demo_dotnetcore_web_api.Models;
 using demo_dotnetcore_web_api.src.Data;
 using demo_dotnetcore_web_api.src.Interfaces;
 using demo_dotnetcore_web_api.src.Models;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace demo_dotnetcore_web_api.src.Repository
@@ -17,6 +19,14 @@ namespace demo_dotnetcore_web_api.src.Repository
         {
             this._context = context;
         }
+
+        public async Task<Portfolio> CreateAsync(Portfolio portfolio)
+        {
+            await _context.Portfolios.AddAsync(portfolio);
+            await _context.SaveChangesAsync();
+            return portfolio;
+        }
+
         public async Task<List<Stock>> GetUserPorfolio(AppUser appUser)
         {
             return await _context.Portfolios.Where(u => u.AppUserId == appUser.Id)
@@ -30,5 +40,9 @@ namespace demo_dotnetcore_web_api.src.Repository
                 MarketCap = stock.Stock.MarketCap
             }).ToListAsync();
         }
+
+
+
+
     }
 }
