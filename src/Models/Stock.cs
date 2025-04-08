@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
+using demo_dotnetcore_web_api.src.Models;
 
 namespace demo_dotnetcore_web_api.Models
 {
+    [Table("stocks")]
     public class Stock
     {
         public int Id { get; set; }
@@ -18,5 +20,6 @@ namespace demo_dotnetcore_web_api.Models
         public string Industry { get; set; } = string.Empty;
         public long MarketCap { get; set; }
         public List<Comment> Comments { get; set; } = new List<Comment>();
+        public List<Portfolio> Portfolios { get; set; } = new List<Portfolio>();
     }
 }

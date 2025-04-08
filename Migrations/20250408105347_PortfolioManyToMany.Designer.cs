@@ -12,8 +12,8 @@ using demo_dotnetcore_web_api.src.Data;
 namespace demo_dotnetcore_web_api.Migrations
 {
     [DbContext(typeof(ApplicationDBContext))]
-    [Migration("20250407132219_SeedRoleAgain")]
-    partial class SeedRoleAgain
+    [Migration("20250408105347_PortfolioManyToMany")]
+    partial class PortfolioManyToMany
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -53,13 +53,13 @@ namespace demo_dotnetcore_web_api.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "a68e1faf-b6ce-4960-a1f1-dd2ed4650eb2",
+                            Id = "Admin",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "5b0810c1-0b28-4d11-8753-d460234a6fd5",
+                            Id = "User",
                             Name = "User",
                             NormalizedName = "USER"
                         });
@@ -197,7 +197,7 @@ namespace demo_dotnetcore_web_api.Migrations
 
                     b.HasIndex("StockId");
 
-                    b.ToTable("Comments");
+                    b.ToTable("comments");
                 });
 
             modelBuilder.Entity("demo_dotnetcore_web_api.Models.Stock", b =>
@@ -231,7 +231,7 @@ namespace demo_dotnetcore_web_api.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Stocks");
+                    b.ToTable("stocks");
                 });
 
             modelBuilder.Entity("demo_dotnetcore_web_api.src.Models.AppUser", b =>
@@ -298,6 +298,21 @@ namespace demo_dotnetcore_web_api.Migrations
                     b.ToTable("AspNetUsers", (string)null);
                 });
 
+            modelBuilder.Entity("demo_dotnetcore_web_api.src.Models.Portfolio", b =>
+                {
+                    b.Property<string>("AppUserId")
+                        .HasColumnType("text");
+
+                    b.Property<int>("StockId")
+                        .HasColumnType("integer");
+
+                    b.HasKey("AppUserId", "StockId");
+
+                    b.HasIndex("StockId");
+
+                    b.ToTable("portfolios");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -358,9 +373,35 @@ namespace demo_dotnetcore_web_api.Migrations
                     b.Navigation("Stock");
                 });
 
+            modelBuilder.Entity("demo_dotnetcore_web_api.src.Models.Portfolio", b =>
+                {
+                    b.HasOne("demo_dotnetcore_web_api.src.Models.AppUser", "AppUser")
+                        .WithMany("Portfolios")
+                        .HasForeignKey("AppUserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("demo_dotnetcore_web_api.Models.Stock", "Stock")
+                        .WithMany("Portfolios")
+                        .HasForeignKey("StockId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("AppUser");
+
+                    b.Navigation("Stock");
+                });
+
             modelBuilder.Entity("demo_dotnetcore_web_api.Models.Stock", b =>
                 {
                     b.Navigation("Comments");
+
+                    b.Navigation("Portfolios");
+                });
+
+            modelBuilder.Entity("demo_dotnetcore_web_api.src.Models.AppUser", b =>
+                {
+                    b.Navigation("Portfolios");
                 });
 #pragma warning restore 612, 618
         }

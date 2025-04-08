@@ -4,10 +4,12 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
 
+#pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
+
 namespace demo_dotnetcore_web_api.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialCreate : Migration
+    public partial class PortfolioManyToMany : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -52,7 +54,7 @@ namespace demo_dotnetcore_web_api.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Stocks",
+                name: "stocks",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
@@ -66,7 +68,7 @@ namespace demo_dotnetcore_web_api.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Stocks", x => x.Id);
+                    table.PrimaryKey("PK_stocks", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -176,7 +178,7 @@ namespace demo_dotnetcore_web_api.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Comments",
+                name: "comments",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
@@ -188,12 +190,45 @@ namespace demo_dotnetcore_web_api.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Comments", x => x.Id);
+                    table.PrimaryKey("PK_comments", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Comments_Stocks_StockId",
+                        name: "FK_comments_stocks_StockId",
                         column: x => x.StockId,
-                        principalTable: "Stocks",
+                        principalTable: "stocks",
                         principalColumn: "Id");
+                });
+
+            migrationBuilder.CreateTable(
+                name: "portfolios",
+                columns: table => new
+                {
+                    AppUserId = table.Column<string>(type: "text", nullable: false),
+                    StockId = table.Column<int>(type: "integer", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_portfolios", x => new { x.AppUserId, x.StockId });
+                    table.ForeignKey(
+                        name: "FK_portfolios_AspNetUsers_AppUserId",
+                        column: x => x.AppUserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_portfolios_stocks_StockId",
+                        column: x => x.StockId,
+                        principalTable: "stocks",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.InsertData(
+                table: "AspNetRoles",
+                columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
+                values: new object[,]
+                {
+                    { "Admin", null, "Admin", "ADMIN" },
+                    { "User", null, "User", "USER" }
                 });
 
             migrationBuilder.CreateIndex(
@@ -234,8 +269,13 @@ namespace demo_dotnetcore_web_api.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_Comments_StockId",
-                table: "Comments",
+                name: "IX_comments_StockId",
+                table: "comments",
+                column: "StockId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_portfolios_StockId",
+                table: "portfolios",
                 column: "StockId");
         }
 
@@ -258,7 +298,10 @@ namespace demo_dotnetcore_web_api.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "Comments");
+                name: "comments");
+
+            migrationBuilder.DropTable(
+                name: "portfolios");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
@@ -267,7 +310,7 @@ namespace demo_dotnetcore_web_api.Migrations
                 name: "AspNetUsers");
 
             migrationBuilder.DropTable(
-                name: "Stocks");
+                name: "stocks");
         }
     }
 }

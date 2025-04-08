@@ -8,6 +8,6 @@ namespace demo_dotnetcore_web_api.src.Models
 {
     public class AppUser : IdentityUser
     {
-
+        public List<Portfolio> Portfolios { get; set; } = [];
     }
 }

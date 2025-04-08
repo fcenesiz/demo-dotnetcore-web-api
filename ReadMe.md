@@ -52,7 +52,10 @@ Asp .Net 8 Stock Market Web Api
 ## Used Techniques
 
     - One-To-Many Creation
+    - Many-To-Many Creation
     - Data Validation
     - Filtering
     - Sorting
     - Pagination ( Generic )
+    - JWT Authorization
+    - Register, Login
