@@ -7,6 +7,7 @@ using demo_dotnetcore_web_api.src.Dtos.Stock;
 using demo_dotnetcore_web_api.src.Helpers;
 using demo_dotnetcore_web_api.src.Interfaces;
 using demo_dotnetcore_web_api.src.Mappers;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 
@@ -25,6 +26,7 @@ namespace demo_dotnetcore_web_api.src.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         public async Task<IActionResult> GetAll([FromQuery] QueryObject query)
         {
             if (!ModelState.IsValid)
@@ -36,6 +38,7 @@ namespace demo_dotnetcore_web_api.src.Controllers
         }
 
         [HttpGet("{id:int}")]
+        [Authorize]
         public async Task<IActionResult> GetById([FromRoute] int id)
         {
             if (!ModelState.IsValid)
@@ -51,6 +54,7 @@ namespace demo_dotnetcore_web_api.src.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public async Task<IActionResult> Create([FromBody] CreateStockRequestDto stockDto)
         {
             if (!ModelState.IsValid)
@@ -63,6 +67,7 @@ namespace demo_dotnetcore_web_api.src.Controllers
 
         [HttpPut]
         [Route("{id:int}")]
+        [Authorize]
         public async Task<IActionResult> Update([FromRoute] int id, [FromBody] UpdateStockRequestDto updateDto)
         {
             if (!ModelState.IsValid)
@@ -79,6 +84,7 @@ namespace demo_dotnetcore_web_api.src.Controllers
 
         [HttpDelete]
         [Route("{id:int}")]
+        [Authorize]
         public async Task<IActionResult> Delete([FromRoute] int id)
         {
             if (!ModelState.IsValid)

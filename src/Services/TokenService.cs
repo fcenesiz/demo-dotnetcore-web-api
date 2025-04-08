@@ -9,8 +9,6 @@ using demo_dotnetcore_web_api.src.Interfaces;
 using demo_dotnetcore_web_api.src.Models;
 using Microsoft.IdentityModel.Tokens;
 
-
-
 namespace demo_dotnetcore_web_api.src.Services
 {
     public class TokenService : ITokenService
