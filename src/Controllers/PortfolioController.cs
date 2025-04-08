@@ -70,5 +70,27 @@ namespace demo_dotnetcore_web_api.src.Controllers
             return Created();
         }
 
+        [HttpDelete]
+        [Authorize]
+        public async Task<IActionResult> DeletePortfolio(string symbol)
+        {
+            var username = User.GetUserName();
+            var appUser = await _userManager.FindByNameAsync(username);
+            var userPortfolio = await _porfolioRepository.GetUserPorfolio(appUser);
+            var filteredStock = userPortfolio.Where(s => s.Symbol.ToLower() == symbol.ToLower()).ToList();
+
+            if (filteredStock.Count() == 1)
+            {
+                await _porfolioRepository.DeletePortfolio(appUser, symbol);
+            }
+            else
+            {
+                return BadRequest("Stock is not in your portfolio");
+            }
+
+            return Ok();
+
+        }
+
     }
 }

@@ -11,5 +11,6 @@ namespace demo_dotnetcore_web_api.src.Interfaces
     {
         Task<List<Stock>> GetUserPorfolio(AppUser appUser);
         Task<Portfolio> CreateAsync(Portfolio portfolio);
+        Task<Portfolio?> DeletePortfolio(AppUser appUser, string symbol);
     }
 }
