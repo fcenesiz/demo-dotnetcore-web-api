@@ -1,5 +1,6 @@
 using demo_dotnetcore_web_api.src.Data;
 using demo_dotnetcore_web_api.src.Interfaces;
+using demo_dotnetcore_web_api.src.Interfaces.Service;
 using demo_dotnetcore_web_api.src.Models;
 using demo_dotnetcore_web_api.src.Repository;
 using demo_dotnetcore_web_api.src.Services;
@@ -97,9 +98,11 @@ builder.Services.AddScoped<ITokenService, TokenService>();
 builder.Services.AddScoped<IStockService, StockService>();
 builder.Services.AddScoped<ICommentService, CommentService>();
 
+
 // Repositories
 builder.Services.AddScoped<IStockRepository, StockRepository>();
 builder.Services.AddScoped<ICommentRepository, CommentRepository>();
+builder.Services.AddScoped<IPortfolioRepository, PortfolioRepository>();
 
 var app = builder.Build();
 

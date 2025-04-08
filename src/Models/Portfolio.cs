@@ -7,6 +7,7 @@ using demo_dotnetcore_web_api.Models;
 
 namespace demo_dotnetcore_web_api.src.Models
 {
+    // UserStock Many-To-Many relationship middle table
     [Table("portfolios")]
     public class Portfolio
     {
