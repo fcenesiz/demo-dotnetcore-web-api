@@ -40,7 +40,7 @@ namespace demo_dotnetcore_web_api.src.Services
             return await _stockRepository.DeleteAsync(id);
         }
 
-        public async Task<Pagination<StockDto>> GetAllAsync(QueryObject query)
+        public async Task<Pagination<StockDto>> GetAllAsync(StockQueryObject query)
         {
             var stocks = await _stockRepository.GetAllAsync(query);
             var stocksDto = stocks.Select(s => s.ToStockDto()).ToList();

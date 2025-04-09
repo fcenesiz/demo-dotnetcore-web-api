@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace demo_dotnetcore_web_api.src.Helpers
 {
-    public class QueryObject
+    public class StockQueryObject
     {
 
         public int Page { get; set; } = 1;

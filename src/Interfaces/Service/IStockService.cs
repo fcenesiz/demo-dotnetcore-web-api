@@ -10,7 +10,7 @@ namespace demo_dotnetcore_web_api.src.Interfaces
 {
     public interface IStockService
     {
-        Task<Pagination<StockDto>> GetAllAsync(QueryObject query);
+        Task<Pagination<StockDto>> GetAllAsync(StockQueryObject query);
         Task<StockDto?> GetByIdAsync(int id);
         Task<Stock?> GetBySymbolAsync(string symbol);
         Task<StockDto> CreateAsync(CreateStockRequestDto stockModel);

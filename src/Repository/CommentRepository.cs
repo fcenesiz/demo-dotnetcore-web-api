@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using demo_dotnetcore_web_api.Models;
 using demo_dotnetcore_web_api.src.Data;
+using demo_dotnetcore_web_api.src.Helpers;
 using demo_dotnetcore_web_api.src.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
@@ -36,9 +37,20 @@ namespace demo_dotnetcore_web_api.src.Repository
             return commentModel;
         }
 
-        public async Task<List<Comment>> GetAllAsync()
+        public async Task<List<Comment>> GetAllAsync(CommentQueryObject queryObject)
         {
-            return await _context.Comments.Include(a => a.AppUser).ToListAsync();
+            var comments = _context.Comments.Include(a => a.AppUser).AsQueryable();
+
+            if (!string.IsNullOrWhiteSpace(queryObject.Symbol))
+            {
+                comments = comments.Where(s => s.Stock.Symbol == queryObject.Symbol);
+            }
+            if (queryObject.IsDecsending == true)
+            {
+                comments = comments.OrderByDescending(c => c.CreatedOn);
+            }
+
+            return await comments.ToListAsync();
         }
 
         public async Task<Comment?> GetByIdAsync(int id)

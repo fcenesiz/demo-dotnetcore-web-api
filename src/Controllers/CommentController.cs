@@ -4,9 +4,11 @@ using System.Linq;
 using System.Threading.Tasks;
 using demo_dotnetcore_web_api.src.Dtos.Comment;
 using demo_dotnetcore_web_api.src.Extensions;
+using demo_dotnetcore_web_api.src.Helpers;
 using demo_dotnetcore_web_api.src.Interfaces;
 using demo_dotnetcore_web_api.src.Mappers;
 using demo_dotnetcore_web_api.src.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
@@ -28,7 +30,8 @@ namespace demo_dotnetcore_web_api.src.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetAll()
+        [Authorize]
+        public async Task<IActionResult> GetAll([FromQuery] CommentQueryObject queryObject)
         {
             if (!ModelState.IsValid)
             {
@@ -37,7 +40,7 @@ namespace demo_dotnetcore_web_api.src.Controllers
 
 
 
-            var commentDtos = await _commentService.GetAllAsync();
+            var commentDtos = await _commentService.GetAllAsync(queryObject);
             return Ok(commentDtos);
         }
 

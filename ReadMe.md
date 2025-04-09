@@ -60,3 +60,4 @@ Asp .Net 8 Stock Market Web Api
     - Pagination ( Generic )
     - JWT Authorization
     - Register, Login
+    - DataSeeding

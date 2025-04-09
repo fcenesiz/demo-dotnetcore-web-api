@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using demo_dotnetcore_web_api.Models;
 using demo_dotnetcore_web_api.src.Dtos.Comment;
+using demo_dotnetcore_web_api.src.Helpers;
 using demo_dotnetcore_web_api.src.Interfaces;
 using demo_dotnetcore_web_api.src.Interfaces.Service;
 using demo_dotnetcore_web_api.src.Mappers;
@@ -58,9 +59,9 @@ namespace demo_dotnetcore_web_api.src.Services
             return commenModel;
         }
 
-        public async Task<List<CommentDto>> GetAllAsync()
+        public async Task<List<CommentDto>> GetAllAsync(CommentQueryObject queryObject)
         {
-            var comments = await _commentRepo.GetAllAsync();
+            var comments = await _commentRepo.GetAllAsync(queryObject);
             var commentDtos = comments.Select(c => c.ToCommentDto()).ToList();
             return commentDtos;
         }

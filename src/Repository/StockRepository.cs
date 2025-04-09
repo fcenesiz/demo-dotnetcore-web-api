@@ -39,7 +39,7 @@ namespace demo_dotnetcore_web_api.src.Repository
             return stockModel;
         }
 
-        public async Task<List<Stock>> GetAllAsync(QueryObject query)
+        public async Task<List<Stock>> GetAllAsync(StockQueryObject query)
         {
             var stocks = _context.Stocks.Include(c => c.Comments).ThenInclude(a => a.AppUser).AsQueryable();
             if (!string.IsNullOrWhiteSpace(query.CompanyName))

@@ -27,7 +27,7 @@ namespace demo_dotnetcore_web_api.src.Controllers
 
         [HttpGet]
         [Authorize]
-        public async Task<IActionResult> GetAll([FromQuery] QueryObject query)
+        public async Task<IActionResult> GetAll([FromQuery] StockQueryObject query)
         {
             if (!ModelState.IsValid)
             {
