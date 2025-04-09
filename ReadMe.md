@@ -61,3 +61,7 @@ Asp .Net 8 Stock Market Web Api
     - JWT Authorization
     - Register, Login
     - DataSeeding
+
+## Used Third-Part APIs
+
+    - https://site.financialmodelingprep.com (for Stock Datas)
