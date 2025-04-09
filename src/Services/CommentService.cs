@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using demo_dotnetcore_web_api.Models;
 using demo_dotnetcore_web_api.src.Dtos.Comment;
 using demo_dotnetcore_web_api.src.Interfaces;
+using demo_dotnetcore_web_api.src.Interfaces.Service;
 using demo_dotnetcore_web_api.src.Mappers;
 using demo_dotnetcore_web_api.src.Models;
 using Microsoft.AspNetCore.Identity;
@@ -15,25 +16,32 @@ namespace demo_dotnetcore_web_api.src.Services
     {
         private readonly ICommentRepository _commentRepo;
         private readonly IStockService _stockService;
+        private readonly IFMPService _fMPService;
 
 
-        public CommentService(ICommentRepository repository, IStockService stockService, UserManager<AppUser> userManager)
+        public CommentService(ICommentRepository repository, IStockService stockService, IFMPService fMPService, UserManager<AppUser> userManager)
         {
             this._commentRepo = repository;
             this._stockService = stockService;
-
+            this._fMPService = fMPService;
         }
 
-        public async Task<CommentDto?> CreateAsync(int stockId, CreateCommentDto createCommentDto, AppUser appUser)
+        public async Task<CommentDto?> CreateAsync(string symbol, CreateCommentDto createCommentDto, AppUser appUser)
         {
-            if (!await _stockService.StockExistsAsync(stockId))
+            var stock = await _stockService.GetBySymbolAsync(symbol);
+            if (stock == null)
             {
-                return null;
+                stock = await _fMPService.FindStockBySymbolAsync(symbol);
+                if (stock == null)
+                {
+                    return null;
+                }
+                await _stockService.CreateAsync(stock);
             }
 
 
 
-            var commentModel = createCommentDto.ToCommentFromCreate(stockId);
+            var commentModel = createCommentDto.ToCommentFromCreate(stock.Id);
             commentModel.AppUserId = appUser.Id;
             await _commentRepo.CreateAsync(commentModel);
             return commentModel.ToCommentDto();

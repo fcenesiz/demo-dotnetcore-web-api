@@ -4,7 +4,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using demo_dotnetcore_web_api.src.Extensions;
 using demo_dotnetcore_web_api.src.Interfaces;
+using demo_dotnetcore_web_api.src.Interfaces.Service;
 using demo_dotnetcore_web_api.src.Models;
+using demo_dotnetcore_web_api.src.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -19,11 +21,18 @@ namespace demo_dotnetcore_web_api.src.Controllers
         private readonly UserManager<AppUser> _userManager;
         private readonly IStockRepository _stockRepository;
         private readonly IPortfolioRepository _porfolioRepository;
-        public PortfolioController(UserManager<AppUser> userManager, IStockRepository stockRepository, IPortfolioRepository portfolioRepository)
+        private readonly IFMPService _fMPService;
+        public PortfolioController(
+            UserManager<AppUser> userManager,
+             IStockRepository stockRepository,
+              IPortfolioRepository portfolioRepository,
+              IFMPService fMPService
+        )
         {
             this._userManager = userManager;
             this._stockRepository = stockRepository;
             this._porfolioRepository = portfolioRepository;
+            this._fMPService = fMPService;
         }
 
         [HttpGet]
@@ -44,6 +53,16 @@ namespace demo_dotnetcore_web_api.src.Controllers
             var username = User.GetUserName();
             var appUser = await _userManager.FindByNameAsync(username);
             var stock = await _stockRepository.GetBySymbolAsync(symbol);
+
+            if (stock == null)
+            {
+                stock = await _fMPService.FindStockBySymbolAsync(symbol);
+                if (stock == null)
+                {
+                    return null;
+                }
+                await _stockRepository.CreateAsync(stock);
+            }
 
             if (stock == null)
             {

@@ -28,6 +28,13 @@ namespace demo_dotnetcore_web_api.src.Services
             return createdStock.ToStockDto();
         }
 
+        public async Task<StockDto> CreateAsync(Stock stockModel)
+        {
+
+            var createdStock = await _stockRepository.CreateAsync(stockModel);
+            return createdStock.ToStockDto();
+        }
+
         public async Task<Stock?> DeleteAsync(int id)
         {
             return await _stockRepository.DeleteAsync(id);
@@ -48,6 +55,16 @@ namespace demo_dotnetcore_web_api.src.Services
                 return null;
             }
             return stock.ToStockDto();
+        }
+
+        public async Task<Stock?> GetBySymbolAsync(string symbol)
+        {
+            var stock = await _stockRepository.GetBySymbolAsync(symbol);
+            if (stock == null)
+            {
+                return null;
+            }
+            return stock;
         }
 
         public async Task<bool> StockExistsAsync(int id)

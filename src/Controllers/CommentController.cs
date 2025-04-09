@@ -57,8 +57,8 @@ namespace demo_dotnetcore_web_api.src.Controllers
         }
 
 
-        [HttpPost("{stockId:int}")]
-        public async Task<IActionResult> Create([FromRoute] int stockId, CreateCommentDto createCommentDto)
+        [HttpPost("{symbol:alpha}")]
+        public async Task<IActionResult> Create([FromRoute] string symbol, CreateCommentDto createCommentDto)
         {
             if (!ModelState.IsValid)
             {
@@ -68,7 +68,7 @@ namespace demo_dotnetcore_web_api.src.Controllers
             var username = User.GetUserName();
             var appUser = await _userManager.FindByNameAsync(username);
 
-            var commentDto = await _commentService.CreateAsync(stockId, createCommentDto, appUser!);
+            var commentDto = await _commentService.CreateAsync(symbol, createCommentDto, appUser!);
             if (commentDto == null)
             {
                 return BadRequest("Stock does not exist");
